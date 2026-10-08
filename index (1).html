@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>College Assistant Chatbot</title>
+  <style>
+    :root {
+      --ink: #0f2e2f;
+      --ink-soft: #46605f;
+      --bg: #f3f7f6;
+      --panel: #ffffff;
+      --line: #d3e0de;
+      --accent: #f2a900;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 18px max(20px, env(safe-area-inset-right)) 18px max(20px, env(safe-area-inset-left));
+      padding-top: calc(18px + env(safe-area-inset-top, 0px));
+      border-bottom: 4px solid var(--accent);
+    }
+    .wrap { width: 100%; max-width: 880px; margin: 0 auto; }
+    header h1 { margin: 0; font-size: 1.15rem; font-weight: 600; letter-spacing: .01em; }
+    main { flex: 1; padding: 56px 20px 40px; }
+    .hero h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      line-height: 1.1;
+      margin: 0 0 16px;
+      max-width: 14ch;
+    }
+    .hero p { margin: 0; max-width: 46ch; font-size: 1.05rem; color: var(--ink-soft); }
+    .topics {
+      list-style: none;
+      margin: 44px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+    .topics li {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .topics strong { min-width: 7.5rem; font-size: 1.05rem; }
+    .topics span { color: var(--ink-soft); }
+    .hint {
+      margin-top: 32px;
+      padding: 14px 18px;
+      background: var(--panel);
+      border-left: 4px solid var(--accent);
+      max-width: 46ch;
+    }
+    footer {
+      padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+      font-size: .9rem;
+      color: var(--ink-soft);
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 520px) {
+      main { padding-top: 36px; }
+      .topics li { flex-direction: column; gap: 2px; }
+    }
+    df-messenger {
+      --df-messenger-button-titlebar-color: #0f2e2f;
+      --df-messenger-chat-background-color: #f3f7f6;
+      --df-messenger-send-icon: #0f2e2f;
+      --df-messenger-user-message: #0f2e2f;
+    }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><h1>College Assistant</h1></div></header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <h2>Questions about college? Just ask.</h2>
+        <p>Ask about admissions, fees, exams, timetable or hostel.</p>
+      </section>
+
+      <ul class="topics">
+        <li><strong>Admissions</strong><span>Eligibility, dates and how to apply</span></li>
+        <li><strong>Fees</strong><span>Course fees and payment details</span></li>
+        <li><strong>Exams</strong><span>Schedules and exam rules</span></li>
+        <li><strong>Timetable</strong><span>Class timings and schedules</span></li>
+        <li><strong>Hostel</strong><span>Rooms, rules and facilities</span></li>
+      </ul>
+
+      <div class="hint">Click the chat bubble at the bottom right to start.</div>
+    </div>
+  </main>
+
+  <footer><div class="wrap">Your College Name</div></footer>
+
+  <!-- Dialogflow chatbot: keep this inside <body>, at the end -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="College_Assistance_Chatbot"
+    agent-id="9b0f0fd0-786c-4b0b-a7c0-47b2353c8ced"
+    language-code="en"
+  ></df-messenger>
+</body>
+</html>
